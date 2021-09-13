@@ -11,6 +11,7 @@ import store from "./src/appRedux/store";
 import RecycleScreen from "./src/screens/RecycleScreen";
 import DetailsScreen from "./src/screens/RecycleScreen/DetailsScreen";
 import NewRecycleScreen from "./src/screens/RecycleScreen/NewRecycleScreen";
+import EditRecycleScreen from "./src/screens/RecycleScreen/EditRecycleScreen";
 import ImageScreen from "./src/screens/ImageScreen";
 
 const Tab = createBottomTabNavigator();
@@ -45,10 +46,12 @@ const App = () => {
 			amber: {
 				400: "#d97706",
 			},
+			orange: '#FF931E',
+			whiteYellow: '#FED478',
 		},
 		config: {
 			// Changing initialColorMode to 'dark'
-			initialColorMode: "dark",
+			initialColorMode: "light",
 		},
 		fontConfig: {
 			NoirPro: {
@@ -138,6 +141,11 @@ const App = () => {
 								<Stack.Screen
 									name="NewRecycle"
 									component={NewRecycleScreen}
+									options={{ headerShown: true }}
+								/>
+								<Stack.Screen
+									name="EditRecycle"
+									component={EditRecycleScreen}
 									options={{ headerShown: true }}
 								/>
 								<Stack.Screen

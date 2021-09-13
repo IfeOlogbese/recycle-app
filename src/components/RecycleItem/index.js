@@ -6,7 +6,7 @@ const RecycleItem = ({ navigation, cycle }) => {
 		<Pressable
 			onPress={() => {
 				navigation.navigate("Details", {
-					text: cycle.text,
+					id: cycle.id,
 				});
 			}}
 			_pressed={{

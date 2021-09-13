@@ -3,7 +3,7 @@ import { View, Platform } from "react-native";
 import { Button, Image, VStack } from "native-base";
 import * as ImagePicker from "expo-image-picker";
 
-const ImageUpload = ({ receiveImage }) => {
+const ImageUpload = ({ receiveImage, imageUri }) => {
 	const [image, setImage] = useState(null);
 
 	useEffect(() => {
@@ -35,14 +35,16 @@ const ImageUpload = ({ receiveImage }) => {
 		}
 	};
 
+	const imageSource = image || imageUri;
+
 	return (
 		<VStack>
 			<Button onPress={pickImage} bg="#fff">
 				Select image
 			</Button>
 
-			{image && (
-				<Image alt="RecycleImage" borderRadius={8} source={{ uri: image }} style={{ width: 200, height: 200 }} />
+			{imageSource && (
+				<Image alignSelf="center" alt="RecycleImage" borderRadius={8} source={{ uri: imageSource }} style={{ width: 200, height: 200 }} />
 			)}
 		</VStack>
 	);

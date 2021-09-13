@@ -1,17 +1,8 @@
 import React, { useLayoutEffect, useState } from "react";
 import { connect } from "react-redux";
 import { orderBy } from "lodash";
-import { StyleSheet, Alert } from "react-native";
-import {
-	Box,
-	Button,
-	Center,
-	Heading,
-	ScrollView,
-	Image,
-	VStack,
-} from "native-base";
-import { DrawerActions } from "@react-navigation/native";
+import { StyleSheet, ScrollView } from "react-native";
+import { Box, Heading, VStack } from "native-base";
 import RecycleItem from "../../components/RecycleItem";
 
 const HomeScreen = (props) => {
@@ -28,7 +19,7 @@ const HomeScreen = (props) => {
 
 	return (
 		<Box flex={1}>
-			<ScrollView>
+			<ScrollView showsVerticalScrollIndicator={false}>
 				<Heading ml={5} my={5} size="xl">
 					ALL recycles
 				</Heading>

@@ -68,7 +68,8 @@ const reducerRecycleAdd = (state, action) => ({
 	recycles: [
 		...state.recycles,
 		{
-			text: action.payload.recycleName,
+			text: action.payload.text,
+			description: action.payload.description,
 			id: state.recycles.length + 1,
 			image: action.payload.image,
 		},
