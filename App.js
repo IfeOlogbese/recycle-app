@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Provider } from "react-redux";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 import { NavigationContainer } from "@react-navigation/native";
@@ -14,6 +14,7 @@ import NewRecycleScreen from "./src/screens/RecycleScreen/NewRecycleScreen";
 import EditRecycleScreen from "./src/screens/RecycleScreen/EditRecycleScreen";
 import ImageScreen from "./src/screens/ImageScreen";
 import AuthScreen from "./src/screens/AuthScreen";
+import * as ScreenOrientation from "expo-screen-orientation";
 
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
@@ -132,6 +133,13 @@ const App = () => {
 			},
 		},
 	});
+
+	useEffect(() => {
+		// Lock screen orientation to portrait
+		ScreenOrientation.lockAsync(
+			ScreenOrientation.OrientationLock.PORTRAIT_UP
+		);
+	}, []);
 
 	if (!fontsLoaded) {
 		return <AppLoading />;

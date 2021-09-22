@@ -16,16 +16,19 @@ import { MaterialIcons, AntDesign } from "@expo/vector-icons";
 import { useForm } from "react-hook-form";
 import { windowHeight } from "../utils/dimensions";
 import FormInput from "../components/FormInput";
+import { useOrientation } from "../hooks/orientation";
 
 const LoginScreen = ({ navigation }) => {
 	const {
 		control,
-		handleSubmit,
 		formState: { errors },
 	} = useForm();
 
+	const orientation = useOrientation();
+	console.log("orientationValue", orientation);
+
 	return (
-		<Box flex={1}>
+		<Box flex={1} flexDirection={orientation === 'PORTRAIT' ? 'column' : 'row' }>
 			<ScrollView showsVerticalScrollIndicator={false}>
 				<VStack style={styles.container} w="100%">
 					<Image

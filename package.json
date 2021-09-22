@@ -34,7 +34,9 @@
     "redux": "^4.1.1",
     "redux-thunk": "^2.3.0",
     "styled-components": "^5.3.0",
-    "styled-system": "^5.1.5"
+    "styled-system": "^5.1.5",
+    "expo-screen-orientation": "~3.2.1",
+    "expo-sensors": "~10.2.2"
   },
   "devDependencies": {
     "@babel/core": "^7.9.0"
