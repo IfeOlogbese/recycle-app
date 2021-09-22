@@ -51,6 +51,7 @@ const FormInput = ({
 							value={value}
 							{...inputProps}
 							{...rest}
+							returnKeyType="done"
 							placeholder={placeholder}
 						/>
 					)}
