@@ -132,7 +132,7 @@ const StackScreen = () => {
 const CustomDrawerContent = (props) => {
 	const { recycles } = props;
 	return (
-		<DrawerContentScrollView {...props}>
+		<DrawerContentScrollView {...props} showsVerticalScrollIndicator={false}>
 			<DrawerItem
 				label={() => (
 					<Image
@@ -143,7 +143,7 @@ const CustomDrawerContent = (props) => {
 				)}
 				onPress={() => props.navigation.closeDrawer()}
 			/>
-			<DrawerItemList {...props} />
+			{/* <DrawerItemList {...props} /> */}
 			{recycles.map((recycle) => (
 				<DrawerItem
 					label={() => (

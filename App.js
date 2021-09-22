@@ -13,6 +13,7 @@ import DetailsScreen from "./src/screens/RecycleScreen/DetailsScreen";
 import NewRecycleScreen from "./src/screens/RecycleScreen/NewRecycleScreen";
 import EditRecycleScreen from "./src/screens/RecycleScreen/EditRecycleScreen";
 import ImageScreen from "./src/screens/ImageScreen";
+import AuthScreen from "./src/screens/AuthScreen";
 
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
@@ -20,11 +21,17 @@ const Stack = createNativeStackNavigator();
 const App = () => {
 	let [fontsLoaded] = useFonts({
 		"NoirPro-Heavy": require("./assets/fonts/NoirPro-Heavy.ttf"),
+		"NoirPro-HeavyItalic": require("./assets/fonts/NoirPro-HeavyItalic.ttf"),
 		"NoirPro-Bold": require("./assets/fonts/NoirPro-Bold.ttf"),
+		"NoirPro-BoldItalic": require("./assets/fonts/NoirPro-BoldItalic.ttf"),
 		"NoirPro-SemiBold": require("./assets/fonts/NoirPro-SemiBold.ttf"),
+		"NoirPro-SemiBoldItalic": require("./assets/fonts/NoirPro-SemiBoldItalic.ttf"),
 		"NoirPro-Medium": require("./assets/fonts/NoirPro-Medium.ttf"),
+		"NoirPro-MediumItalic": require("./assets/fonts/NoirPro-MediumItalic.ttf"),
 		"NoirPro-Regular": require("./assets/fonts/NoirPro-Regular.ttf"),
+		"NoirPro-Italic": require("./assets/fonts/NoirPro-Italic.ttf"),
 		"NoirPro-Light": require("./assets/fonts/NoirPro-Light.ttf"),
+		"NoirPro-LightItalic": require("./assets/fonts/NoirPro-LightItalic.ttf"),
 	});
 
 	const theme = extendTheme({
@@ -46,8 +53,8 @@ const App = () => {
 			amber: {
 				400: "#d97706",
 			},
-			orange: '#FF931E',
-			whiteYellow: '#FED478',
+			orange: "#FF931E",
+			whiteYellow: "#FED478",
 		},
 		config: {
 			// Changing initialColorMode to 'dark'
@@ -57,21 +64,27 @@ const App = () => {
 			NoirPro: {
 				100: {
 					normal: "NoirPro-Light",
+					italic: "NoirPro-LightItalic",
 				},
 				200: {
 					normal: "NoirPro-Regular",
+					italic: "NoirPro-Italic",
 				},
 				300: {
 					normal: "NoirPro-Medium",
+					italic: "NoirPro-MediumItalic",
 				},
 				400: {
 					normal: "NoirPro-SemiBold",
+					italic: "NoirPro-SemiBoldItalic",
 				},
 				500: {
 					normal: "NoirPro-Bold",
+					italic: "NoirPro-BoldItalic",
 				},
 				600: {
 					normal: "NoirPro-Heavy",
+					italic: "NoirPro-HeavyItalic",
 				},
 			},
 		},
@@ -105,8 +118,8 @@ const App = () => {
 			Text: {
 				baseStyle: ({ colorMode }) => {
 					return {
-						color: "#000",
-						fontWeight: "Light",
+						fontWeight: "200",
+						fontFamily: "NoirPro-Light",
 					};
 				},
 			},
@@ -128,10 +141,8 @@ const App = () => {
 				<Provider store={store}>
 					<NativeBaseProvider theme={theme}>
 						<NavigationContainer>
-							<Stack.Navigator
-								initialRouteName="HomeTab"
-								screenOptions={{ headerShown: false }}
-							>
+							<Stack.Navigator screenOptions={{ headerShown: false }}>
+								<Stack.Screen name="Auth" component={AuthScreen} />
 								<Stack.Screen name="HomeTab" component={RecycleScreen} />
 								<Stack.Screen
 									name="Details"
