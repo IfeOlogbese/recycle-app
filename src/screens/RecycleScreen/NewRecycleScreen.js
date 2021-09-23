@@ -3,7 +3,7 @@ import { StyleSheet } from "react-native";
 import { connect } from "react-redux";
 import { ScrollView, Box, Heading } from "native-base";
 import RecycleForm from "../../components/RecycleForm";
-import { actionRecycleAdd } from "../../appRedux/actions/actionRecycle";
+import { actionRecycleAdd } from "../../appRedux/actions";
 
 const NewRecycleScreen = (props) => {
 	const { navigation, actionRecycleAdd: actionRecycleAddFunc } = props;
