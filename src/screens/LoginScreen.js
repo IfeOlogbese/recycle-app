@@ -1,5 +1,5 @@
 import React from "react";
-import { StyleSheet, View } from "react-native";
+import { StyleSheet } from "react-native";
 import {
 	Image,
 	Icon,
@@ -10,7 +10,6 @@ import {
 	ScrollView,
 	Box,
 	Pressable,
-	HStack,
 } from "native-base";
 import { MaterialIcons, AntDesign } from "@expo/vector-icons";
 import { useForm } from "react-hook-form";
@@ -28,7 +27,7 @@ const LoginScreen = ({ navigation }) => {
 	console.log("orientationValue", orientation);
 
 	return (
-		<Box flex={1} flexDirection={orientation === 'PORTRAIT' ? 'column' : 'row' }>
+		<Box flex={1} flexDirection={orientation === "PORTRAIT" ? "column" : "row"}>
 			<ScrollView showsVerticalScrollIndicator={false}>
 				<VStack style={styles.container} w="100%">
 					<Image
@@ -45,7 +44,7 @@ const LoginScreen = ({ navigation }) => {
 						Recycle App
 					</Text>
 
-					<Stack style={styles.formWrapper} mt={5}>
+					<Stack style={styles.formWrapper} mt={3}>
 						<FormInput
 							control={control}
 							errorField={errors.username}
@@ -91,7 +90,12 @@ const LoginScreen = ({ navigation }) => {
 						/>
 
 						<VStack mt={5}>
-							<Button style={styles.button} mx={4} size="lg">
+							<Button
+								style={styles.button}
+								mx={4}
+								size="lg"
+								onPress={() => navigation.navigate("HomeTab")}
+							>
 								Sign in
 							</Button>
 						</VStack>
@@ -170,8 +174,8 @@ const styles = StyleSheet.create({
 		marginBottom: 50,
 	},
 	logo: {
-		height: 150,
-		width: 150,
+		height: 120,
+		width: 120,
 		resizeMode: "cover",
 		marginBottom: 10,
 	},
