@@ -40,7 +40,7 @@ const SignupScreen = ({ navigation, thunkAuthSignup: thunkAuthSignupFunc }) => {
 						<FormInput
 							control={control}
 							errorField={errors.email}
-							required={true}
+							label="Email address"
 							rules={{
 								required: true,
 								minLength: 3,
@@ -62,7 +62,7 @@ const SignupScreen = ({ navigation, thunkAuthSignup: thunkAuthSignupFunc }) => {
 						<FormInput
 							control={control}
 							errorField={errors.password}
-							required={true}
+							label="Password"
 							rules={{
 								required: true,
 								minLength: 3,
@@ -84,7 +84,7 @@ const SignupScreen = ({ navigation, thunkAuthSignup: thunkAuthSignupFunc }) => {
 						<FormInput
 							control={control}
 							errorField={errors.firstname}
-							required={true}
+							label="First name"
 							rules={{
 								required: true,
 								minLength: 3,
@@ -106,7 +106,7 @@ const SignupScreen = ({ navigation, thunkAuthSignup: thunkAuthSignupFunc }) => {
 						<FormInput
 							control={control}
 							errorField={errors.lastname}
-							required={true}
+							label="Surname"
 							rules={{
 								required: true,
 								minLength: 3,

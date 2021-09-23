@@ -10,14 +10,15 @@ const FormInput = ({
 	errorMessage,
 	rules,
 	control,
+	label,
+	showLabel,
 	type,
-	required,
 	placeholder,
 	name,
 	...rest
 }) => {
 	let inputProps = {};
-	let isRequired = required || false;
+	let inputRules = { required: false, minLength: 3, ...rules };
 
 	if (type === "email") {
 		inputProps = {
@@ -25,29 +26,39 @@ const FormInput = ({
 			autoCompleteType: "email",
 			keyboardType: "email-address",
 			textContentType: "emailAddress",
-			autoCapitalize: 'none',
-			clearButtonMode: 'while-editing'
+			autoCapitalize: "none",
+			clearButtonMode: "while-editing",
 		};
 	} else if (type === "password") {
 		inputProps = {
 			autoCompleteType: "password",
 			textContentType: "password",
 			type: "password",
-			autoCapitalize: 'none',
+			autoCapitalize: "none",
 			autoCorrect: false,
-			clearButtonMode: 'while-editing'
+			clearButtonMode: "while-editing",
 		};
 	}
 
+	const errorMessageFunc = (error) => {
+		if (error?.type === "required") {
+			return `${label} is required.`;
+		} else if (error?.type === "maxLength") {
+			return `${label} cannot exceed ${rules.maxLength} characters`;
+		} else if (error?.type === "minLength") {
+			return `Minimum ${rules.minLength} characters allowed`;
+		} else {
+			return errorMessage;
+		}
+	};
+
 	return (
-		<FormControl mt={5} isRequired={isRequired} isInvalid={!isNil(errorField)}>
+		<FormControl mt={5} isRequired={inputRules.required} isInvalid={!isNil(errorField)}>
 			<Stack mx={4}>
+				{showLabel ? <FormControl.Label>{label}</FormControl.Label> : null}
 				<Controller
 					control={control}
-					rules={{
-						required: true,
-						minLength: 3,
-					}}
+					rules={inputRules}
 					render={({ field: { onChange, onBlur, value } }) => (
 						<Input
 							size="lg"
@@ -65,7 +76,9 @@ const FormInput = ({
 					name={name}
 				/>
 
-				<FormControl.ErrorMessage>{errorMessage}</FormControl.ErrorMessage>
+				<FormControl.ErrorMessage>
+					{errorMessageFunc(errorField)}
+				</FormControl.ErrorMessage>
 			</Stack>
 		</FormControl>
 	);

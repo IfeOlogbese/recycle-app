@@ -56,7 +56,7 @@ const LoginScreen = ({ navigation, thunkAuthLogin: thunkAuthLoginFunc }) => {
 						<FormInput
 							control={control}
 							errorField={errors.username}
-							required={true}
+							label="Username"
 							rules={{
 								required: true,
 								minLength: 3,
@@ -78,7 +78,7 @@ const LoginScreen = ({ navigation, thunkAuthLogin: thunkAuthLoginFunc }) => {
 						<FormInput
 							control={control}
 							errorField={errors.password}
-							required={true}
+							label="Password"
 							rules={{
 								required: true,
 								minLength: 3,
