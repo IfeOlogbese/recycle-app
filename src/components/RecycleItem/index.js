@@ -31,7 +31,7 @@ const RecycleItem = ({ navigation, cycle }) => {
 							size="sm"
 							borderRadius={8}
 						/>
-						<Center ml={10}><Text color={isPressed ? "#fff" : ""}>{cycle.text}</Text></Center>
+						<Center ml={10}><Text color={isPressed ? "#fff" : "#000"}>{cycle.text}</Text></Center>
 					</HStack>
 				);
 			}}
