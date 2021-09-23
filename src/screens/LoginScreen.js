@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { StyleSheet } from "react-native";
 import {
 	Image,
@@ -11,20 +11,28 @@ import {
 	Box,
 	Pressable,
 } from "native-base";
+import { connect } from "react-redux";
 import { MaterialIcons, AntDesign } from "@expo/vector-icons";
 import { useForm } from "react-hook-form";
+// import { GOOGLE_CLIENT_ID } from "@env";
 import { windowHeight } from "../utils/dimensions";
 import FormInput from "../components/FormInput";
 import { useOrientation } from "../hooks/orientation";
+import { thunkAuthLogin } from "../appRedux/actions";
 
-const LoginScreen = ({ navigation }) => {
+const LoginScreen = ({ navigation, thunkAuthLogin: thunkAuthLoginFunc }) => {
 	const {
 		control,
+		handleSubmit,
 		formState: { errors },
 	} = useForm();
 
 	const orientation = useOrientation();
 	console.log("orientationValue", orientation);
+
+	const onSubmit = (data) => {
+		thunkAuthLoginFunc(data, () => navigation.navigate("HomeTab"));
+	};
 
 	return (
 		<Box flex={1} flexDirection={orientation === "PORTRAIT" ? "column" : "row"}>
@@ -94,7 +102,7 @@ const LoginScreen = ({ navigation }) => {
 								style={styles.button}
 								mx={4}
 								size="lg"
-								onPress={() => navigation.navigate("HomeTab")}
+								onPress={handleSubmit((data) => onSubmit(data))}
 							>
 								Sign in
 							</Button>
@@ -163,7 +171,11 @@ const LoginScreen = ({ navigation }) => {
 	);
 };
 
-export default LoginScreen;
+const mapDispatchToProps = {
+	thunkAuthLogin,
+};
+
+export default connect(null, mapDispatchToProps)(LoginScreen);
 
 const styles = StyleSheet.create({
 	container: {

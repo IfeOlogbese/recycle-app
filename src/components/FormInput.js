@@ -21,14 +21,21 @@ const FormInput = ({
 
 	if (type === "email") {
 		inputProps = {
+			type: "email",
 			autoCompleteType: "email",
 			keyboardType: "email-address",
 			textContentType: "emailAddress",
+			autoCapitalize: 'none',
+			clearButtonMode: 'while-editing'
 		};
 	} else if (type === "password") {
 		inputProps = {
 			autoCompleteType: "password",
 			textContentType: "password",
+			type: "password",
+			autoCapitalize: 'none',
+			autoCorrect: false,
+			clearButtonMode: 'while-editing'
 		};
 	}
 

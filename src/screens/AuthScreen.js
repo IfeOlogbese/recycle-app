@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet } from "react-native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import LoginScreen from "./LoginScreen";
+import SignupScreen from "./SignupScreen";
 import OnboardingScreen from "./OnboardingScreen";
 
 const Stack = createNativeStackNavigator();
@@ -38,6 +39,7 @@ const AuthScreen = ({ children }) => {
 			<Stack.Group>
 				<Stack.Screen name="Onboarding" component={OnboardingScreen} />
 				<Stack.Screen name="Login" component={LoginScreen} />
+				<Stack.Screen name="Signup" component={SignupScreen} />
 			</Stack.Group>
 		</Stack.Navigator>
 	);

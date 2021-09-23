@@ -7,6 +7,7 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { NativeBaseProvider, extendTheme } from "native-base";
 import AppLoading from "expo-app-loading";
 import { useFonts } from "expo-font";
+import * as ScreenOrientation from "expo-screen-orientation";
 import store from "./src/appRedux/store";
 import RecycleScreen from "./src/screens/RecycleScreen";
 import DetailsScreen from "./src/screens/RecycleScreen/DetailsScreen";
@@ -14,7 +15,6 @@ import NewRecycleScreen from "./src/screens/RecycleScreen/NewRecycleScreen";
 import EditRecycleScreen from "./src/screens/RecycleScreen/EditRecycleScreen";
 import ImageScreen from "./src/screens/ImageScreen";
 import AuthScreen from "./src/screens/AuthScreen";
-import * as ScreenOrientation from "expo-screen-orientation";
 
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
@@ -127,7 +127,8 @@ const App = () => {
 			Input: {
 				baseStyle: ({ colorMode }) => {
 					return {
-						color: "#000",
+						// color: "#545454",
+						fontWeight: "200",
 					};
 				},
 			},
@@ -136,9 +137,7 @@ const App = () => {
 
 	useEffect(() => {
 		// Lock screen orientation to portrait
-		ScreenOrientation.lockAsync(
-			ScreenOrientation.OrientationLock.PORTRAIT_UP
-		);
+		ScreenOrientation.lockAsync(ScreenOrientation.OrientationLock.PORTRAIT_UP);
 	}, []);
 
 	if (!fontsLoaded) {
