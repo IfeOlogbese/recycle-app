@@ -1,5 +1,12 @@
 import React from "react";
-import { Text, Pressable, HStack, Image, Center } from "native-base";
+import { Pressable } from "react-native";
+import {
+	Card,
+	CardTitleWrapper,
+	CardTitle,
+	CardDescription,
+	CardImage,
+} from "../../styles/RecycleItemStyles";
 
 const RecycleItem = ({ navigation, cycle }) => {
 	return (
@@ -9,32 +16,19 @@ const RecycleItem = ({ navigation, cycle }) => {
 					id: cycle.id,
 				});
 			}}
-			_pressed={{
-				bg: "primary.500",
-			}}
-			p={4}
-			bg="#fff"
-			mb={3}
-			width="100%"
-			rounded="lg"
-			shadow={4}
 			key={cycle.id}
 		>
-			{({ isHovered, isFocused, isPressed }) => {
-				return (
-					<HStack>
-						<Image
-							source={{
-								uri: cycle.image,
-							}}
-							alt="Alternate Text"
-							size="sm"
-							borderRadius={8}
-						/>
-						<Center ml={10}><Text color={isPressed ? "#fff" : "#000"}>{cycle.text}</Text></Center>
-					</HStack>
-				);
-			}}
+			<Card>
+				<CardTitleWrapper>
+					<CardTitle>{cycle.text}</CardTitle>
+					<CardDescription>{cycle.description}</CardDescription>
+				</CardTitleWrapper>
+				<CardImage
+					source={{
+						uri: cycle.image,
+					}}
+				/>
+			</Card>
 		</Pressable>
 	);
 };

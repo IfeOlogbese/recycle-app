@@ -1,14 +1,14 @@
 import React from "react";
 import { StyleSheet, Text, View } from "react-native";
 
-const CompletedScreen = () => {
+const ChatScreen = () => {
 	return (
 		<View>
-			<Text>Completed recycles screen.</Text>
+			<Text>Chat screen</Text>
 		</View>
 	);
 };
 
-export default CompletedScreen;
+export default ChatScreen;
 
 const styles = StyleSheet.create({});

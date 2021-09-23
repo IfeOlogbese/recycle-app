@@ -1,14 +1,14 @@
 import React from "react";
 import { StyleSheet, Text, View } from "react-native";
 
-const PendingScreen = () => {
+const FavoriteScreen = () => {
 	return (
 		<View>
-			<Text>Pending recycles screen</Text>
+			<Text>Favorite recycles screen.</Text>
 		</View>
 	);
 };
 
-export default PendingScreen;
+export default FavoriteScreen;
 
 const styles = StyleSheet.create({});

@@ -13,12 +13,12 @@ import {
 	getFocusedRouteNameFromRoute,
 	DrawerActions,
 } from "@react-navigation/native";
-import { Button, TouchableOpacity } from "react-native";
-import { Foundation, Ionicons } from "@expo/vector-icons";
+import { TouchableOpacity } from "react-native";
+import { Foundation, Ionicons, MaterialIcons } from "@expo/vector-icons";
 import HomeScreen from "./HomeScreen";
-import CompletedScreen from "./CompletedScreen";
-import PendingScreen from "./PendingScreen";
-import DetailsScreen from "./DetailsScreen";
+import FavoriteScreen from "./FavoriteScreen";
+import ChatScreen from "./ChatScreen";
+import AccountScreen from "./AccountScreen";
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -33,10 +33,12 @@ function getHeaderTitle(route) {
 	switch (routeName) {
 		case "Home":
 			return "Home Screen";
-		case "Completed":
-			return "Completed Screen";
-		case "Pending":
-			return "Pending Screen";
+		case "Favorite":
+			return "Favorite Screen";
+		case "Chat":
+			return "Chat Screen";
+		case "Account":
+			return "Account Screen";
 	}
 }
 
@@ -45,26 +47,18 @@ function getTabBarIcon(route, focused, color, size) {
 
 	if (route.name === "Home") {
 		iconName = focused ? "home" : "home-outline";
-	} else if (route.name === "Completed") {
-		iconName = focused
-			? "checkmark-done-circle"
-			: "checkmark-done-circle-outline";
-	} else if (route.name === "Pending") {
-		iconName = focused ? "cloud-upload" : "cloud-upload-outline";
+		return <Ionicons name={iconName} size={size} color={color} />;
+	} else if (route.name === "Favorite") {
+		iconName = focused ? "favorite" : "favorite-outline";
+		return <MaterialIcons name={iconName} size={size} color={color} />;
+	} else if (route.name === "Chat") {
+		iconName = focused ? "chatbox-ellipses" : "chatbox-ellipses-outline";
+		return <Ionicons name={iconName} size={size} color={color} />;
+	} else if (route.name === "Account") {
+		iconName = focused ? "person-circle" : "person-circle-outline";
+		return <Ionicons name={iconName} size={size} color={color} />;
 	}
-
-	// You can return any component that you like here!
-	return <Ionicons name={iconName} size={size} color={color} />;
 }
-
-const HomeStack = () => {
-	return (
-		<Stack.Navigator>
-			<Stack.Screen name="Home" component={HomeScreen} />
-			<Stack.Screen name="Details" component={DetailsScreen} />
-		</Stack.Navigator>
-	);
-};
 
 const TabScreen = ({ navigation, route }) => {
 	useLayoutEffect(() => {
@@ -98,34 +92,15 @@ const TabScreen = ({ navigation, route }) => {
 				),
 				tabBarIcon: ({ focused, color, size }) =>
 					getTabBarIcon(route, focused, color, size),
-				tabBarActiveTintColor: "tomato",
+				tabBarActiveTintColor: "#006cb3",
 				tabBarInactiveTintColor: "gray",
 			})}
 		>
 			<Tab.Screen name="Home" component={HomeScreen} />
-			<Tab.Screen name="Completed" component={CompletedScreen} />
-			<Tab.Screen name="Pending" component={PendingScreen} />
+			<Tab.Screen name="Favorite" component={FavoriteScreen} />
+			<Tab.Screen name="Chat" component={ChatScreen} />
+			<Tab.Screen name="Account" component={AccountScreen} />
 		</Tab.Navigator>
-	);
-};
-
-const StackScreen = () => {
-	return (
-		<Stack.Navigator>
-			<Stack.Screen
-				name="StackScreen"
-				component={TabScreen}
-				options={{
-					headerLeft: () => (
-						<Button
-							onPress={() => alert("This is a button!")}
-							title="Info"
-							color="#00cc00"
-						/>
-					),
-				}}
-			/>
-		</Stack.Navigator>
 	);
 };
 

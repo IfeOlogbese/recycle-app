@@ -2,8 +2,15 @@ import React, { useLayoutEffect, useState } from "react";
 import { connect } from "react-redux";
 import { orderBy } from "lodash";
 import { StyleSheet, ScrollView } from "react-native";
-import { Box, Heading, VStack } from "native-base";
+import { Box, Heading, VStack, Text } from "native-base";
 import RecycleItem from "../../components/RecycleItem";
+import {
+	Card,
+	CardTitleWrapper,
+	CardTitle,
+	CardDescription,
+	CardImage,
+} from "../../styles/RecycleItemStyles";
 
 const HomeScreen = (props) => {
 	const { navigation, recycles } = props;
@@ -24,11 +31,9 @@ const HomeScreen = (props) => {
 					ALL recycles
 				</Heading>
 
-				<VStack alignItems="center" mx={5}>
-					{orderBy(recycles, ["id"], ["desc"]).map((cycle) => (
-						<RecycleItem key={cycle.id} navigation={navigation} cycle={cycle} />
-					))}
-				</VStack>
+				{orderBy(recycles, ["id"], ["desc"]).map((cycle) => (
+					<RecycleItem key={cycle.id} navigation={navigation} cycle={cycle} />
+				))}
 			</ScrollView>
 		</Box>
 	);

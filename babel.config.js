@@ -14,6 +14,7 @@ module.exports = function (api) {
 					allowUndefined: true,
 				},
 			],
+			["babel-plugin-styled-components"],
 		],
 	};
 };
