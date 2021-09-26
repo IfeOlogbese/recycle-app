@@ -4,13 +4,7 @@ import { orderBy } from "lodash";
 import { StyleSheet, ScrollView } from "react-native";
 import { Box, Heading, VStack, Text } from "native-base";
 import RecycleItem from "../../components/RecycleItem";
-import {
-	Card,
-	CardTitleWrapper,
-	CardTitle,
-	CardDescription,
-	CardImage,
-} from "../../styles/RecycleItemStyles";
+import Slider from "../../components/Slider";
 
 const HomeScreen = (props) => {
 	const { navigation, recycles } = props;
@@ -27,6 +21,8 @@ const HomeScreen = (props) => {
 	return (
 		<Box flex={1}>
 			<ScrollView showsVerticalScrollIndicator={false}>
+				<Slider />
+
 				<Heading ml={5} my={5} size="xl">
 					ALL recycles
 				</Heading>
