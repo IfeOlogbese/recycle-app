@@ -17,8 +17,8 @@ import { TouchableOpacity } from "react-native";
 import { Foundation, Ionicons, MaterialIcons } from "@expo/vector-icons";
 import HomeScreen from "./HomeScreen";
 import FavoriteScreen from "./FavoriteScreen";
-import ChatScreen from "./ChatScreen";
 import AccountScreen from "./AccountScreen";
+import MessagesScreen from '../MessagesScreen';
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -35,8 +35,8 @@ function getHeaderTitle(route) {
 			return "Home Screen";
 		case "Favorite":
 			return "Favorite Screen";
-		case "Chat":
-			return "Chat Screen";
+		case "Message":
+			return "Message Screen";
 		case "Account":
 			return "Account Screen";
 	}
@@ -51,7 +51,7 @@ function getTabBarIcon(route, focused, color, size) {
 	} else if (route.name === "Favorite") {
 		iconName = focused ? "favorite" : "favorite-outline";
 		return <MaterialIcons name={iconName} size={size} color={color} />;
-	} else if (route.name === "Chat") {
+	} else if (route.name === "Message") {
 		iconName = focused ? "chatbox-ellipses" : "chatbox-ellipses-outline";
 		return <Ionicons name={iconName} size={size} color={color} />;
 	} else if (route.name === "Account") {
@@ -98,7 +98,7 @@ const TabScreen = ({ navigation, route }) => {
 		>
 			<Tab.Screen name="Home" component={HomeScreen} />
 			<Tab.Screen name="Favorite" component={FavoriteScreen} />
-			<Tab.Screen name="Chat" component={ChatScreen} />
+			<Tab.Screen name="Message" component={MessagesScreen} />
 			<Tab.Screen name="Account" component={AccountScreen} />
 		</Tab.Navigator>
 	);

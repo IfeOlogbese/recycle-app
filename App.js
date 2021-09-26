@@ -15,6 +15,7 @@ import NewRecycleScreen from "./src/screens/RecycleScreen/NewRecycleScreen";
 import EditRecycleScreen from "./src/screens/RecycleScreen/EditRecycleScreen";
 import ImageScreen from "./src/screens/ImageScreen";
 import AuthScreen from "./src/screens/AuthScreen";
+import ChatScreen from './src/screens/ChatScreen';
 
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
@@ -165,6 +166,15 @@ const App = () => {
 									name="EditRecycle"
 									component={EditRecycleScreen}
 									options={{ headerShown: true }}
+								/>
+								<Stack.Screen
+									name="Chat"
+									component={ChatScreen}
+									options={({route}) => ({
+										headerShown: true,
+										title: route.params.userName,
+										headerBackTitleVisible: false,
+									})}
 								/>
 								<Stack.Screen
 									name="ImageScreen"
